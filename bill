@@ -1,0 +1,33 @@
+import random
+
+lista = []
+invite = input("Enter the number of friends joining (including you): \n ")
+invite = int(invite)
+if invite <= 0:
+    print("No one is joining for the party")
+elif invite > 0:
+    print("Enter the name of every friend (including you), each on a new line: \n")
+    for n in range(invite):
+        a = input()
+        lista.append(a)
+    lucky = input('Do you want to use the "Who is lucky?" feature? Write Yes/No: \n').lower()
+    total_bill = float(input("Enter the total bill value: \n"))
+    if lucky == "yes":
+        lucky_mem = random.choice(lista)
+        print("{} is the lucky one!".format(lucky_mem))
+        lucky_index = lista.index(lucky_mem)
+        lista.pop(lucky_index)
+        av_bill = round((total_bill / float(invite - 1)), 2)
+        friends = dict.fromkeys(lista, av_bill)
+        d = {lucky_mem: 0}
+        friends.update(d)
+        print(friends)
+    elif lucky == "no":
+        print("No one is going to be lucky")
+        av_bill = round((total_bill / float(invite)), 2)
+        friends = dict.fromkeys(lista, av_bill)
+        print(friends)
+    else:
+        print("Invalid input")
+else:
+    print("invalid input") 
