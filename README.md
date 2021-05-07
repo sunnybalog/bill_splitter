@@ -1,2 +1,2 @@
 # bill_splitter
-Python script to split among friends
+Python script to split bill among friends
